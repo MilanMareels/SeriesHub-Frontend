@@ -10,11 +10,11 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
 	return (
 		<Card className="w-[350px] m-4" key={animeSerie._id}>
 			<CardHeader>
-				<CardTitle>{animeSerie.title}</CardTitle>
-				<CardDescription>{animeSerie.genre[0]}</CardDescription>
+				<CardTitle>{animeSerie.animeTitle}</CardTitle>
+				<CardDescription>{animeSerie.description}</CardDescription>
 			</CardHeader>
 			<CardContent>
-				{animeSerie.year} - {animeSerie.episodes}
+				{animeSerie.animeStatus} - {animeSerie.episodes}
 			</CardContent>
 			<CardFooter className="flex justify-between">
 				<Button variant="outline">Cancel</Button>
