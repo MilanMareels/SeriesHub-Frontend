@@ -27,8 +27,8 @@ const Login = () => {
 	};
 
 	return (
-		<div className=" bg-slate-600 w-full h-screen flex justify-center items-center flex-col">
-			<div className="max-w-lg w-full m-4">
+		<div className=" bg-slate-600 w-full h-screen flex justify-center items-center">
+			<div className="max-w-lg w-full m-6">
 				<div className="box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); bg-gray-800 rounded-lg shadow-xl overflow-hidden">
 					<div className="p-8">
 						<h2 className="text-center text-3xl font-extrabold text-white">Welcome Back</h2>
