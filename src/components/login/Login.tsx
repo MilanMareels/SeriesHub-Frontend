@@ -5,17 +5,24 @@ import useLogin from "@/hooks/useLogin";
 
 const Login = () => {
 	const { loginUser } = useLogin();
+
 	const { login, setUserId } = useContext(AuthContext);
+
 	const [text, setText] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [errorMessage, setErrorMessage] = useState<string>("");
+	const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
-	const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const handleLogin = async (event: React.FormEvent) => {
+		event.preventDefault();
 		const response = await loginUser(text, password);
 
-		if (response.message !== "") {
-			setErrorMessage(response.message);
+		if ("error" in response && response.error) {
+			if (response.status) {
+				setErrorMessage(response.data.message);
+			}
+		} else {
+			setUserId(response.userId!);
+			login();
 		}
 	};
 
@@ -52,9 +59,11 @@ const Login = () => {
 								</div>
 							</div>
 
-							<div className="flex justify-center items-center bg-red-700">
-								<p>{errorMessage}</p>
-							</div>
+							{errorMessage && (
+								<div className="flex justify-center items-center bg-red-700 text-white p-2 rounded-lg">
+									<p>{errorMessage}</p>
+								</div>
+							)}
 
 							<div>
 								<Button

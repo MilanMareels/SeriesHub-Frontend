@@ -1,7 +1,7 @@
-import { postLogin } from "@/services/users/login";
+import { LoginError, LoginResponse, postLogin } from "@/services/users/login";
 
 const useLogin = () => {
-	const loginUser = async (text: string, password: string) => {
+	const loginUser = async (text: string, password: string): Promise<LoginResponse | LoginError> => {
 		const response = await postLogin(text, password);
 		return response;
 	};
