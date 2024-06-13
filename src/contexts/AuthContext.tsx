@@ -4,7 +4,7 @@ interface AuthContextType {
 	isAuthenticated: boolean;
 	userId: string;
 	setUserId: (userId: string) => void;
-	login: () => void;
+	login: (userId: string) => void;
 	logout: () => void;
 }
 
@@ -17,15 +17,25 @@ export const AuthContext = React.createContext<AuthContextType>({
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-	const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-	const [userId, setUserId] = useState<string>("");
+	const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+		return localStorage.getItem("isAuthenticated") === "true";
+	});
+	const [userId, setUserId] = useState<string>(() => {
+		return localStorage.getItem("userId") || "";
+	});
 
-	const login = () => {
+	const login = (id: string) => {
 		setIsAuthenticated(true);
+		setUserId(id);
+		localStorage.setItem("isAuthenticated", "true");
+		localStorage.setItem("userId", id);
 	};
 
 	const logout = () => {
 		setIsAuthenticated(false);
+		setUserId("");
+		localStorage.removeItem("isAuthenticated");
+		localStorage.removeItem("userId");
 	};
 
 	return <AuthContext.Provider value={{ isAuthenticated, userId, setUserId, login, logout }}>{children}</AuthContext.Provider>;

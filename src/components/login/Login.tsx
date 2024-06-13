@@ -6,7 +6,7 @@ import useLogin from "@/hooks/useLogin";
 const Login = () => {
 	const { loginUser } = useLogin();
 
-	const { login, setUserId } = useContext(AuthContext);
+	const { login } = useContext(AuthContext);
 
 	const [text, setText] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
@@ -22,8 +22,7 @@ const Login = () => {
 				setErrorMessage(response.data.message);
 			}
 		} else {
-			setUserId(response.userId!);
-			login();
+			login(response.userId!);
 		}
 	};
 
