@@ -4,7 +4,7 @@ import { getAnimeSeries } from "../services/anime/animeSeries";
 import { AnimeSerie } from "../models/anime/Anime";
 
 const useAnimeSeries = (userId: string) => {
-	const { data, isError, isLoading, error } = useQuery<AnimeSerie[], AxiosError>(["animeSeries"], () => getAnimeSeries(userId));
+	const { data, isError, isLoading, error } = useQuery<AnimeSerie[], AxiosError>(["animeSeries"], () => getAnimeSeries(userId), { refetchInterval: 10000 });
 
 	return {
 		animeSeries: data,
