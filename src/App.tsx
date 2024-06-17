@@ -8,6 +8,7 @@ import ProfilePage from "./pages/profilePage";
 
 function App() {
 	const { isAuthenticated } = useContext(AuthContext);
+	
 	const queryClient = new QueryClient();
 
 	return (
