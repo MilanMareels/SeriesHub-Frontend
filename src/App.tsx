@@ -1,23 +1,44 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
+import { useContext } from "react";
+import { AuthContext } from "./contexts/AuthContext";
+import Login from "./components/login/Login";
+import ProfilePage from "./pages/profilePage";
+import Register from "./components/register/Register";
+import Navbar from "./components/nav/NavBar";
+import MySeriesPage from "./pages/mySeriesPage";
 
 function App() {
-	const queryClient = new QueryClient();
+  const { isAuthenticated } = useContext(AuthContext);
 
-	return (
-		<>
-			<div className="flex justify-center items-center h-screen w-full">
-				<QueryClientProvider client={queryClient}>
-					<BrowserRouter>
-						<Routes>
-							<Route path="/" element={<HomePage />} />
-						</Routes>
-					</BrowserRouter>
-				</QueryClientProvider>
-			</div>
-		</>
-	);
+  const queryClient = new QueryClient();
+
+  return (
+    <>
+      <div className="flex flex-col h-screen w-full bg-[#070F2B]">
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            {!isAuthenticated ? (
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Routes>
+            ) : (
+              <>
+                <Navbar />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/mySeries" element={<MySeriesPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                </Routes>
+              </>
+            )}
+          </BrowserRouter>
+        </QueryClientProvider>
+      </div>
+    </>
+  );
 }
 
 export default App;
