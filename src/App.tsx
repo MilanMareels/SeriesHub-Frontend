@@ -6,6 +6,7 @@ import { AuthContext } from "./contexts/AuthContext";
 import Login from "./components/login/Login";
 import ProfilePage from "./pages/profilePage";
 import Register from "./components/register/Register";
+import Navbar from "./components/nav/Nav";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -25,10 +26,13 @@ function App() {
                 </Routes>
               </div>
             ) : (
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-              </Routes>
+              <>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                </Routes>
+                <Navbar />
+              </>
             )}
           </BrowserRouter>
         </QueryClientProvider>
