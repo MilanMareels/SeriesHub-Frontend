@@ -23,8 +23,6 @@ function App() {
               <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/mySeries" element={<Login />} />
-                <Route path="/profile" element={<Login />} />
               </Routes>
             ) : (
               <>
