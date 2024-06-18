@@ -6,6 +6,8 @@ import { AuthContext } from "./contexts/AuthContext";
 import Login from "./components/login/Login";
 import ProfilePage from "./pages/profilePage";
 import Register from "./components/register/Register";
+import Navbar from "./components/nav/NavBar";
+import MySeriesPage from "./pages/mySeriesPage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -14,21 +16,23 @@ function App() {
 
   return (
     <>
-      <div className="flex justify-center items-center h-screen w-full">
+      <div className="flex flex-col h-screen w-full bg-[#070F2B]">
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             {!isAuthenticated ? (
-              <div className="flex justify-center items-center h-screen w-full">
-                <Routes>
-                  <Route path="/" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                </Routes>
-              </div>
-            ) : (
               <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
               </Routes>
+            ) : (
+              <>
+                <Navbar />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/mySeries" element={<MySeriesPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                </Routes>
+              </>
             )}
           </BrowserRouter>
         </QueryClientProvider>
