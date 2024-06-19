@@ -23,7 +23,7 @@ const AnimePage = ({ isError, isLoading, error, animeSeries }: AnimePageProps) =
   return (
     <div className="flex flex-wrap justify-center items-center py-6 h-full">
       {animeSeries?.data.map((animeSerie) => (
-        <AnimeCard animeSerie={animeSerie} />
+        <AnimeCard animeSerie={animeSerie} key={animeSerie.mal_id} />
       ))}
     </div>
   );
