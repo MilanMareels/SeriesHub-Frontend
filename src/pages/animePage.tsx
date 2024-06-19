@@ -1,7 +1,6 @@
 import AnimeCard from "@/components/animePage/animeCard";
 import ErrorComponent from "@/components/error/ErrorComponent";
 import Loading from "@/components/ui/loading";
-
 import { AnimeSerie } from "@/models/anime/AnimeSerie";
 import { AxiosError } from "axios";
 
@@ -22,7 +21,7 @@ const AnimePage = ({ isError, isLoading, error, animeSeries }: AnimePageProps) =
   }
 
   return (
-    <div className="flex justify-center items-center flex-wrap h-full w-full p-4">
+    <div className="flex flex-wrap justify-center items-center py-6">
       {animeSeries?.data.map((animeSerie) => (
         <AnimeCard animeSerie={animeSerie} />
       ))}

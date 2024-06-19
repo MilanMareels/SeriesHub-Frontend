@@ -4,19 +4,18 @@ import { useState } from "react";
 
 const AnimePageWrapper = () => {
   const [searchValue, setSearchValue] = useState<string | null>(null);
-  const [page, setPage] = useState(1);
 
-  const { animeSeries, isError, isLoading, error } = useAnimeSeries(searchValue, page);
+  const { animeSeries, isError, isLoading, error } = useAnimeSeries(searchValue, 1);
 
   return (
-    <div className="flex flex-col justify-center items-center p-5">
-      <div className="w-3/5">
+    <div className="flex flex-col m-auto">
+      <div className="pt-6 m-auto">
         <input
           type="text"
           value={searchValue || ""}
           onChange={(e) => setSearchValue(e.target.value)}
-          placeholder="Enter search query"
-          className="border border-gray-300 p-2 rounded-md w-full"
+          className="bg-gray-50ring-0 outline-none border border-neutral-500 text-neutral-900 placeholder-violet-700 text-sm rounded-lg focus:ring-violet-500  focus:border-violet-500 block w-64 p-2.5"
+          placeholder="Find anime..."
         />
       </div>
       <AnimePage isError={isError} isLoading={isLoading} error={error} animeSeries={animeSeries!} />
