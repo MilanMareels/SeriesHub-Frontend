@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col h-full w-full bg-[#070F2B]">
+      <div className="flex flex-col min-h-screen w-full bg-[#070F2B]">
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             {!isAuthenticated ? (
