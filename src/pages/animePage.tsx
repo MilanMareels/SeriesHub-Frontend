@@ -1,11 +1,18 @@
 import AnimeCard from "@/components/animePage/animeCard";
 import ErrorComponent from "@/components/error/ErrorComponent";
 import Loading from "@/components/ui/loading";
-import useAnimeSeries from "@/hooks/useAnime";
 
-const AnimePage = () => {
-  const { animeSeries, isError, isLoading, error } = useAnimeSeries("Swort art Online", 1);
+import { AnimeSerie } from "@/models/anime/AnimeSerie";
+import { AxiosError } from "axios";
 
+interface AnimePageProps {
+  isError: any;
+  isLoading: boolean;
+  error: AxiosError<unknown, any> | null;
+  animeSeries: AnimeSerie;
+}
+
+const AnimePage = ({ isError, isLoading, error, animeSeries }: AnimePageProps) => {
   if (isError) {
     return <ErrorComponent error={error} />;
   }
