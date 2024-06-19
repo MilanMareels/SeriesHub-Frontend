@@ -8,6 +8,7 @@ import ProfilePage from "./pages/profilePage";
 import Register from "./components/register/Register";
 import Navbar from "./components/nav/NavBar";
 import MySeriesPage from "./pages/mySeriesPage";
+import AnimePage from "./pages/animePage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -31,6 +32,7 @@ function App() {
                   <Route path="/" element={<HomePage />} />
                   <Route path="/mySeries" element={<MySeriesPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/anime" element={<AnimePage />} />
                 </Routes>
               </>
             )}
