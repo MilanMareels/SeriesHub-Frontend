@@ -69,7 +69,7 @@ export default function NavBar() {
               </li>
             </ul>
 
-            <div className="mt-3 space-y-2 lg:hidden md:inline-block flex justify-center">
+            <div className="mt-3 space-y-2 md:hidden flex justify-center">
               <Link to="/">
                 <Button className="bg-white" onClick={() => logout()}>
                   Logout
