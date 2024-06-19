@@ -19,7 +19,7 @@ const MySeriesPage = () => {
   }
 
   return (
-    <div className="flex justify-center items-center flex-wrap h-full w-full">
+    <div className="flex justify-center items-center flex-wrap h-screen w-full">
       {animeSeries?.map((animeSerie) => (
         <AnimeCard animeSerie={animeSerie} key={animeSerie._id} />
       ))}

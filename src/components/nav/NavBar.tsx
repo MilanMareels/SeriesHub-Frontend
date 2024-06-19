@@ -53,19 +53,29 @@ export default function NavBar() {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white hover:text-indigo-200">
-                <Link to="/">Home</Link>
+                <Link to="/" onClick={() => setNavbar(false)}>
+                  Home
+                </Link>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/series">Series</Link>
+                <Link to="/series" onClick={() => setNavbar(false)}>
+                  Series
+                </Link>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/mySeries">My Series</Link>
+                <Link to="/mySeries" onClick={() => setNavbar(false)}>
+                  My Series
+                </Link>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/about">About</Link>
+                <Link to="/about" onClick={() => setNavbar(false)}>
+                  About
+                </Link>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile" onClick={() => setNavbar(false)}>
+                  Profile
+                </Link>
               </li>
             </ul>
 
