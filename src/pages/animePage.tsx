@@ -21,7 +21,7 @@ const AnimePage = ({ isError, isLoading, error, animeSeries }: AnimePageProps) =
   }
 
   return (
-    <div className="flex flex-wrap justify-center items-center py-6">
+    <div className="flex flex-wrap justify-center items-center py-6" style={{ width: "90%" }}>
       {animeSeries?.data.map((animeSerie) => (
         <AnimeCard animeSerie={animeSerie} />
       ))}

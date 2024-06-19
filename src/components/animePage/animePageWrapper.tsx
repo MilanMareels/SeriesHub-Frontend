@@ -8,7 +8,7 @@ const AnimePageWrapper = () => {
   const { animeSeries, isError, isLoading, error } = useAnimeSeries(searchValue, 1);
 
   return (
-    <div className="flex flex-col m-auto">
+    <div className="flex flex-col justify-center items-center">
       <div className="pt-6 m-auto">
         <input
           type="text"
