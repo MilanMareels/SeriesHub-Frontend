@@ -9,20 +9,16 @@ const AnimePageWrapper = () => {
   const { animeSeries, isError, isLoading, error } = useAnimeSeries(searchValue, page);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="pt-6 m-auto">
-        <input
-          type="text"
-          value={searchValue || ""}
-          onChange={(e) => setSearchValue(e.target.value)}
-          className="bg-gray-50ring-0 outline-none border border-neutral-500 text-neutral-900 placeholder-violet-700 text-sm rounded-lg focus:ring-violet-500  focus:border-violet-500 block w-64 p-2.5"
-          placeholder="Find anime..."
-        />
-      </div>
+    <div className="flex flex-col bg-red-900 p-4 space-y-4">
+      <input
+        type="text"
+        value={searchValue || ""}
+        onChange={(e) => setSearchValue(e.target.value)}
+        className="bg-gray-50 ring-0 outline-none border border-neutral-500 text-neutral-900 placeholder-violet-700 text-sm rounded-lg focus:ring-violet-500  focus:border-violet-500 block p-2.5 w-64 ml-2"
+        placeholder="Find anime..."
+      />
+
       <AnimePage isError={isError} isLoading={isLoading} error={error} animeSeries={animeSeries!} />
-      <div>
-        <PaginationComponent setPage={setPage} page={page} has_next_page={animeSeries?.pagination.has_next_page!} />
-      </div>
     </div>
   );
 };

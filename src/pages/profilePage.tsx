@@ -1,5 +1,9 @@
 function ProfilePage() {
-  return <div className="flex justify-center items-center flex-wrap h-screen">ProfilePage</div>;
+  return (
+    <div className="h-screen">
+      <p className="text-white">ProfilePage</p>
+    </div>
+  );
 }
 
 export default ProfilePage;

@@ -11,7 +11,7 @@ import {
 interface PaginationComponentProps {
   page: number;
   setPage: (page: number) => void;
-  has_next_page: boolean;
+  has_next_page?: boolean;
 }
 
 const PaginationComponent = ({ setPage, page, has_next_page }: PaginationComponentProps) => {

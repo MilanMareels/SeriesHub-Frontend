@@ -16,30 +16,28 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <>
-      <div className="flex flex-col min-h-screen w-full bg-[#070F2B]">
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            {!isAuthenticated ? (
+    <div className="bg-[#070F2B]">
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          {!isAuthenticated ? (
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          ) : (
+            <>
+              <Navbar />
               <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/mySeries" element={<MySeriesPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/anime" element={<AnimePageWrapper />} />
               </Routes>
-            ) : (
-              <>
-                <Navbar />
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/mySeries" element={<MySeriesPage />} />
-                  <Route path="/profile" element={<ProfilePage />} />
-                  <Route path="/anime" element={<AnimePageWrapper />} />
-                </Routes>
-              </>
-            )}
-          </BrowserRouter>
-        </QueryClientProvider>
-      </div>
-    </>
+            </>
+          )}
+        </BrowserRouter>
+      </QueryClientProvider>
+    </div>
   );
 }
 

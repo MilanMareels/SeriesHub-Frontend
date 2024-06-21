@@ -10,9 +10,9 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
   return (
     <HoverCard>
       <HoverCardTrigger>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col text-center m-2">
           <div
-            className="bg-cover bg-center bg-no-repeat h-[250px] w-[150px] m-5 rounded-lg overflow-hidden"
+            className="bg-cover bg-center bg-no-repeat h-[250px] w-[150px] rounded-lg overflow-hidden"
             style={{
               backgroundImage: `url(${animeSerie.images["jpg"].image_url})`,
             }}
@@ -32,7 +32,7 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
               </h1>
             )}
             {animeSerie.score && (
-              <div className="flex gap-1 justify-center items-center">
+              <div className="flex gap-1">
                 <Star size={20} /> {animeSerie.score}
               </div>
             )}
