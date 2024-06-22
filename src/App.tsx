@@ -8,7 +8,7 @@ import ProfilePage from "./pages/profilePage";
 import Register from "./components/register/Register";
 import Navbar from "./components/nav/NavBar";
 import MySeriesPage from "./pages/mySeriesPage";
-import AnimePageWrapper from "./components/animePage/animePageWrapper";
+import AnimePage from "./pages/animePage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -16,7 +16,7 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="bg-[#070F2B]">
+    <div className="bg-[#070F2B] w-full min-h-screen">
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           {!isAuthenticated ? (
@@ -31,7 +31,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/mySeries" element={<MySeriesPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/anime" element={<AnimePageWrapper />} />
+                <Route path="/anime" element={<AnimePage />} />
               </Routes>
             </>
           )}

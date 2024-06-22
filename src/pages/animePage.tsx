@@ -1,31 +1,34 @@
-import AnimeCard from "@/components/animePage/animeCard";
-import ErrorComponent from "@/components/error/ErrorComponent";
-import Loading from "@/components/ui/loading";
-import { AnimeSerie } from "@/models/anime/AnimeSerie";
-import { AxiosError } from "axios";
+import useAnimeSeries from "@/hooks/useAnime";
 
-interface AnimePageProps {
-  isError: any;
-  isLoading: boolean;
-  error: AxiosError<unknown, any> | null;
-  animeSeries: AnimeSerie;
-}
+import { useState } from "react";
+import PaginationComponent from "../components/animePage/paginationComponent";
+import SearchField from "../components/animePage/searchField";
+import AnimePageWrapper from "@/components/animePage/animePageWrapper";
 
-const AnimePage = ({ isError, isLoading, error, animeSeries }: AnimePageProps) => {
-  if (isError) {
-    return <ErrorComponent error={error} />;
-  }
+const AnimePage = () => {
+  const [currentSearchValue, setCurrentSearchValue] = useState<string | null>("");
+  const [searchValue, setSearchValue] = useState<string | null>("");
+  const [page, setPage] = useState<number>(1);
+  const { animeSeries, isError, isLoading, error } = useAnimeSeries(searchValue, page);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  const handleSearch = () => {
+    setSearchValue(currentSearchValue);
+    setPage(1);
+  };
 
   return (
-    <div className="flex flex-wrap bg-green-600/55">
-      {animeSeries?.data.map((animeSerie) => (
-        <AnimeCard animeSerie={animeSerie} key={animeSerie.mal_id} />
-      ))}
+    <div className="flex flex-col p-4 justify-center items-center">
+      <SearchField
+        currentSearchValue={currentSearchValue}
+        setCurrentSearchValue={setCurrentSearchValue}
+        handleSearch={handleSearch}
+      />
+
+      <AnimePageWrapper isError={isError} isLoading={isLoading} error={error} animeSeries={animeSeries!} />
+
+      <PaginationComponent page={page} setPage={setPage} has_next_page={animeSeries?.pagination.has_next_page} />
     </div>
   );
 };
+
 export default AnimePage;

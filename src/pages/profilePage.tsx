@@ -1,6 +1,6 @@
 function ProfilePage() {
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <p className="text-white">ProfilePage</p>
     </div>
   );

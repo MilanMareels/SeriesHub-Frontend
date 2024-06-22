@@ -4,7 +4,6 @@ import {
   PaginationItem,
   PaginationPrevious,
   PaginationLink,
-  PaginationEllipsis,
   PaginationNext,
 } from "../ui/pagination";
 
@@ -29,9 +28,6 @@ const PaginationComponent = ({ setPage, page, has_next_page }: PaginationCompone
         <PaginationItem>{page !== 1 ? <PaginationPrevious onClick={() => handlePreviousPage()} /> : ""}</PaginationItem>
         <PaginationItem>
           <PaginationLink>{page}</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>{has_next_page && <PaginationNext onClick={() => handleNextPage()} />}</PaginationItem>
       </PaginationContent>

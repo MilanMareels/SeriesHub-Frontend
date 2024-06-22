@@ -10,7 +10,7 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
   return (
     <HoverCard>
       <HoverCardTrigger>
-        <div className="flex flex-col text-center m-2">
+        <div className="flex flex-col text-center m-4">
           <div
             className="bg-cover bg-center bg-no-repeat h-[250px] w-[150px] rounded-lg overflow-hidden"
             style={{
@@ -26,6 +26,8 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
       <HoverCardContent>
         <div className="bg-white w-full h-full p-5 rounded-lg">
           <div className="flex justify-between m-2 gap-2">
+            <p>{animeSerie.title}</p>
+
             {animeSerie.season && (
               <h1>
                 {animeSerie.season} - {animeSerie.year}
