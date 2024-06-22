@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const baseUrl = process.env.BASE_URL;
+export const getAnimeSeries = async (querySearch: string | null, page: number) => {
+  const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${querySearch}&page=${page}`);
 
-export const getAnimeSeries = async (userId: string) => {
-	const response = await axios.get(`${baseUrl}/user/${userId}/AnimeSeries?page=1&listStatus=1`);
-
-	return response.data;
+  return response.data;
 };

@@ -8,6 +8,7 @@ import ProfilePage from "./pages/profilePage";
 import Register from "./components/register/Register";
 import Navbar from "./components/nav/NavBar";
 import MySeriesPage from "./pages/mySeriesPage";
+import AnimePage from "./pages/animePage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -15,29 +16,28 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <>
-      <div className="flex flex-col h-full w-full bg-[#070F2B]">
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            {!isAuthenticated ? (
+    <div className="bg-[#070F2B] w-full min-h-screen">
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          {!isAuthenticated ? (
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          ) : (
+            <>
+              <Navbar />
               <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/mySeries" element={<MySeriesPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/anime" element={<AnimePage />} />
               </Routes>
-            ) : (
-              <>
-                <Navbar />
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/mySeries" element={<MySeriesPage />} />
-                  <Route path="/profile" element={<ProfilePage />} />
-                </Routes>
-              </>
-            )}
-          </BrowserRouter>
-        </QueryClientProvider>
-      </div>
-    </>
+            </>
+          )}
+        </BrowserRouter>
+      </QueryClientProvider>
+    </div>
   );
 }
 

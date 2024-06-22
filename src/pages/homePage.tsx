@@ -1,7 +1,7 @@
 function HomePage() {
   return (
-    <div className="flex justify-center items-center flex-wrap h-screen">
-      <p>HomePage</p>
+    <div className="h-full">
+      <p className="text-white">HomePage</p>
     </div>
   );
 }

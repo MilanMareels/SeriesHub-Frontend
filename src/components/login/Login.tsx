@@ -2,8 +2,8 @@ import { AuthContext } from "@/contexts/AuthContext";
 import { useContext, useState } from "react";
 import useLogin from "@/hooks/useLogin";
 import LoginForm from "./LoginForm";
-import LoginHeader from "./LoginHeader";
-import LoginBottom from "./LoginBottom";
+import FormBottom from "../ui/formBottom";
+import FormHeader from "../ui/formHeader";
 
 const Login = () => {
   const { loginUser } = useLogin();
@@ -38,7 +38,7 @@ const Login = () => {
       <div className="max-w-lg w-full m-6">
         <div className="box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); bg-gray-800 rounded-lg shadow-xl overflow-hidden">
           <div className="p-8">
-            <LoginHeader />
+            <FormHeader title="Welcome Back" text="Sign in to continue" />
             <LoginForm
               handleLogin={handleLogin}
               setPassword={setPassword}
@@ -48,7 +48,7 @@ const Login = () => {
             />
           </div>
 
-          <LoginBottom />
+          <FormBottom text="Don't have an account? " to="/register" linkText="Sign Up" />
         </div>
       </div>
     </div>
