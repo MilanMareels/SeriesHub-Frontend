@@ -14,7 +14,6 @@ const Register = () => {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [fullName, setFullName] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
@@ -24,7 +23,7 @@ const Register = () => {
 
     setLoading(true);
 
-    const response = await registerUser(fullName, userName, email, password);
+    const response = await registerUser(userName, email, password);
 
     if ("error" in response && response.error) {
       if (response.status) {
@@ -48,7 +47,6 @@ const Register = () => {
               handleRegister={handleRegister}
               setPassword={setPassword}
               setEmail={setEmail}
-              setFullName={setFullName}
               setUserName={setUserName}
               errorMessage={errorMessage!}
               loading={loading}
