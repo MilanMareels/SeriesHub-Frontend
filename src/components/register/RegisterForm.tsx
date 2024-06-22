@@ -1,4 +1,4 @@
-import ErrorMessage from "./ErrorMessasge";
+import ErrorMessage from "../error/ErrorMessasge";
 import InputFields from "./InputFields";
 import RegisterButton from "./RegisterButton";
 
