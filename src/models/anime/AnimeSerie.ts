@@ -1,9 +1,9 @@
 export interface AnimeSerie {
   pagination: Pagination;
-  data: Data[];
+  data: AnimeData[];
 }
 
-export interface Data {
+export interface AnimeData {
   mal_id: number;
   url: string;
   images: { [key: string]: Image };

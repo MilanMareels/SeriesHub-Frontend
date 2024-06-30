@@ -9,6 +9,7 @@ import Register from "./components/register/Register";
 import Navbar from "./components/nav/NavBar";
 import MySeriesPage from "./pages/mySeriesPage";
 import AnimePage from "./pages/animePage";
+import AnimeDetailPage from "./pages/animeDetailPage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/mySeries" element={<MySeriesPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/anime" element={<AnimePage />} />
+                <Route path="/anime/:animeId" element={<AnimeDetailPage />} />
               </Routes>
             </>
           )}

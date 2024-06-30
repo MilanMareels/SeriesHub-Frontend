@@ -25,7 +25,7 @@ const ErrorComponent = ({ error }: ErrorComponentProps) => {
   return (
     <div className="flex flex-col justify-center items-center h-screen">
       <Frown color="red" size={100} />
-      <p className="text-lg text-center p-2">{errorMessage}</p>
+      <p className="text-lg text-center p-2 text-white">{errorMessage}</p>
     </div>
   );
 };
