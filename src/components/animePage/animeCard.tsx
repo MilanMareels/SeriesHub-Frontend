@@ -26,13 +26,14 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
       <HoverCardContent>
         <div className="bg-white w-full h-full p-5 rounded-lg">
           <div className="flex justify-between m-2 gap-2">
-            <p>{animeSerie.title}</p>
-
+          <div className="flex flex-col gap-2">
+          <p>{animeSerie.title}</p>
             {animeSerie.season && (
               <h1>
                 {animeSerie.season} - {animeSerie.year}
               </h1>
             )}
+          </div>
             {animeSerie.score && (
               <div className="flex gap-1">
                 <Star size={20} /> {animeSerie.score}
