@@ -2,10 +2,10 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 
 const AddToListSection = () => {
   return (
-    <div className="bg-[#1B1A55] text-white w-[180px] mt-4">
+    <div className="bg-[#1B1A55] text-white -ml-1">
       <Select>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Add to list" />
+          <SelectValue placeholder="Select a status" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup className="bg-[#1B1A55] text-white">
