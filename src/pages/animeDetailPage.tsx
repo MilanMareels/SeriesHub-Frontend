@@ -3,14 +3,16 @@ import AnimeDetailsTopSection from "@/components/animeDetailPage/animeDetailsTop
 import AnimeInfoSection from "@/components/animeDetailPage/animeInfoSection";
 import AnimeTrailerSection from "@/components/animeDetailPage/animeTrailerSection";
 import ErrorComponent from "@/components/error/ErrorComponent";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import Loading from "@/components/ui/loading";
 import useAnimeDetailSeries from "@/hooks/useAnimeDetails";
-import { CheckCheck, Terminal } from "lucide-react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const AnimeDetailPage = () => {
   const { animeId } = useParams();
+  const [success, setSuccess] = useState<boolean>(false);
+  const [selectedStatus, setSelectedStatus] = useState<string>("");
+
   const { animeDetailSeries, isError, isLoading, error } = useAnimeDetailSeries(animeId!);
 
   if (isError) {
@@ -23,16 +25,10 @@ const AnimeDetailPage = () => {
 
   return (
     <div className="flex flex-col p-4">
-      <Alert className="mb-5 bg-green-500">
-        <CheckCheck className="h-4 w-4" />
-        <AlertTitle>Succes</AlertTitle>
-        <AlertDescription>Anime </AlertDescription>
-      </Alert>
-
-      <AnimeDetailsTopSection animeDetailSeries={animeDetailSeries!} />
+      <AnimeDetailsTopSection animeDetailSeries={animeDetailSeries!} success={success} selectedStatus={selectedStatus} />
 
       <div className="mt-5">
-        <DialogAddToList animeDetailSeries={animeDetailSeries!} />
+        <DialogAddToList animeDetailSeries={animeDetailSeries!} setSuccess={setSuccess} selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
       </div>
 
       <div className="flex flex-col md:flex-row mt-4 gap-5 w-full">

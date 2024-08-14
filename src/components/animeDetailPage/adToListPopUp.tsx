@@ -1,19 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AddToListSection from "./addToListSection";
 import { postAnimeToUserList } from "@/services/anime/addAnimeToUserList";
 import { AnimeDetails } from "@/models/anime/AnimeDetails";
 import { AnimeSerieToCreate } from "@/models/animeSerieOfUser/animeSerieOfUserToCreate";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
 
 interface DialogAddToListProps {
   animeDetailSeries: AnimeDetails;
+  setSuccess: (succes: boolean) => void;
+  selectedStatus: string;
+  setSelectedStatus: (selectedStatus: string) => void;
 }
 
-function DialogAddToList({ animeDetailSeries }: DialogAddToListProps) {
+function DialogAddToList({ animeDetailSeries, setSuccess, selectedStatus, setSelectedStatus }: DialogAddToListProps) {
   const { userId } = useContext(AuthContext);
-  const [selectedStatus, setSelectedStatus] = useState<string>("");
 
   const handleAddAnimeToUserList = async (listStatus: string) => {
     const animeSerieToAddToUser: AnimeSerieToCreate = {
@@ -34,7 +36,13 @@ function DialogAddToList({ animeDetailSeries }: DialogAddToListProps) {
       source: animeDetailSeries.data.source,
       format: animeDetailSeries.data.type,
     };
+
     await postAnimeToUserList(animeSerieToAddToUser);
+
+    setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+    }, 5000);
   };
 
   return (
@@ -46,12 +54,14 @@ function DialogAddToList({ animeDetailSeries }: DialogAddToListProps) {
         <DialogHeader className="flex gap-2 items-center md:items-start">
           <DialogTitle>Add to your anime collection</DialogTitle>
           <DialogDescription>Select the status in which you want to place the anime series in your collection.</DialogDescription>
-          <AddToListSection value={selectedStatus} onChange={setSelectedStatus} />
+          <AddToListSection selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
         </DialogHeader>
         <DialogFooter>
-          <Button type="submit" className="bg-white text-[#1B1A55]" onClick={() => handleAddAnimeToUserList(selectedStatus)}>
-            Save changes
-          </Button>
+          <DialogClose asChild>
+            <Button type="button" className="bg-white text-[#1B1A55]" onClick={() => handleAddAnimeToUserList(selectedStatus)}>
+              Save changes
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

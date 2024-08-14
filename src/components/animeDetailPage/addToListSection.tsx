@@ -1,14 +1,14 @@
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface AddToListSectionProps {
-  value: string;
-  onChange: (value: string) => void;
+  selectedStatus: string;
+  setSelectedStatus: (selectedStatus: string) => void;
 }
 
-const AddToListSection = ({ value, onChange }: AddToListSectionProps) => {
+const AddToListSection = ({ selectedStatus, setSelectedStatus }: AddToListSectionProps) => {
   return (
     <div className="bg-[#1B1A55] text-white -ml-1">
-      <Select value={value} onValueChange={onChange}>
+      <Select value={selectedStatus} onValueChange={setSelectedStatus}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Select a status" />
         </SelectTrigger>
