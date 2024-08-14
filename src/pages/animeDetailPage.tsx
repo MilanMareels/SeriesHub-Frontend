@@ -5,10 +5,14 @@ import AnimeTrailerSection from "@/components/animeDetailPage/animeTrailerSectio
 import ErrorComponent from "@/components/error/ErrorComponent";
 import Loading from "@/components/ui/loading";
 import useAnimeDetailSeries from "@/hooks/useAnimeDetails";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const AnimeDetailPage = () => {
   const { animeId } = useParams();
+  const [success, setSuccess] = useState<boolean>(false);
+  const [selectedStatus, setSelectedStatus] = useState<string>("");
+
   const { animeDetailSeries, isError, isLoading, error } = useAnimeDetailSeries(animeId!);
 
   if (isError) {
@@ -21,10 +25,10 @@ const AnimeDetailPage = () => {
 
   return (
     <div className="flex flex-col p-4">
-      <AnimeDetailsTopSection animeDetailSeries={animeDetailSeries!} />
+      <AnimeDetailsTopSection animeDetailSeries={animeDetailSeries!} success={success} selectedStatus={selectedStatus} />
 
       <div className="mt-5">
-        <DialogAddToList />
+        <DialogAddToList animeDetailSeries={animeDetailSeries!} setSuccess={setSuccess} selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
       </div>
 
       <div className="flex flex-col md:flex-row mt-4 gap-5 w-full">

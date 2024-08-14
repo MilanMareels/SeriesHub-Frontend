@@ -18,11 +18,7 @@ const AnimePage = () => {
 
   return (
     <div className="flex flex-col p-4 justify-center items-center">
-      <SearchField
-        currentSearchValue={currentSearchValue}
-        setCurrentSearchValue={setCurrentSearchValue}
-        handleSearch={handleSearch}
-      />
+      <SearchField currentSearchValue={currentSearchValue} setCurrentSearchValue={setCurrentSearchValue} handleSearch={handleSearch} />
 
       <AnimePageWrapper isError={isError} isLoading={isLoading} error={error} animeSeries={animeSeries!} />
 
