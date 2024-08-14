@@ -1,4 +1,4 @@
-import AddToListSection from "@/components/animeDetailPage/addToListSection";
+import DialogAddToList from "@/components/animeDetailPage/adToListPopUp";
 import AnimeDetailsTopSection from "@/components/animeDetailPage/animeDetailsTopSection";
 import AnimeInfoSection from "@/components/animeDetailPage/animeInfoSection";
 import AnimeTrailerSection from "@/components/animeDetailPage/animeTrailerSection";
@@ -23,7 +23,9 @@ const AnimeDetailPage = () => {
     <div className="flex flex-col p-4">
       <AnimeDetailsTopSection animeDetailSeries={animeDetailSeries!} />
 
-      <AddToListSection />
+      <div className="mt-5">
+        <DialogAddToList />
+      </div>
 
       <div className="flex flex-col md:flex-row mt-4 gap-5 w-full">
         <AnimeTrailerSection animeDetailSeries={animeDetailSeries!} />

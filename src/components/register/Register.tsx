@@ -38,19 +38,12 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className="w-full h-svh flex justify-center items-center">
       <div className="max-w-lg w-full m-6">
         <div className="box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); bg-gray-800 rounded-lg shadow-xl overflow-hidden">
           <div className="p-8">
             <FormHeader text="Sign up to continue" title="Welcome" />
-            <RegisterForm
-              handleRegister={handleRegister}
-              setPassword={setPassword}
-              setEmail={setEmail}
-              setUserName={setUserName}
-              errorMessage={errorMessage!}
-              loading={loading}
-            />
+            <RegisterForm handleRegister={handleRegister} setPassword={setPassword} setEmail={setEmail} setUserName={setUserName} errorMessage={errorMessage!} loading={loading} />
           </div>
 
           <FormBottom text="Already have an account? " to="/" linkText="Sign In" />

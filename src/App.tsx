@@ -17,7 +17,7 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="bg-[#070F2B] w-full min-h-screen">
+    <div className="bg-[#070F2B] w-full min-h-svh">
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           {!isAuthenticated ? (
