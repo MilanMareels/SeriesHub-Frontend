@@ -40,7 +40,7 @@ const AnimeInfoSection = ({ animeDetailSeries }: AnimeInfoSectionProps) => {
         <div className="mt-2">
           <strong>Genres</strong>
           {animeDetailSeries?.data.genres.map((genre) => (
-            <p>{genre.name}</p>
+            <p key={genre.name}>{genre.name}</p>
           ))}
         </div>
       </div>
