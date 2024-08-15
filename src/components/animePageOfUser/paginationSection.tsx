@@ -1,11 +1,10 @@
+import { useContext } from "react";
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationNext } from "../ui/pagination";
+import { FilterContext } from "@/contexts/FilterContext";
 
-interface PaginationSectionProps {
-  page: number;
-  setPage: (page: number) => void;
-}
+const PaginationSection = () => {
+  const { page, setPage } = useContext(FilterContext);
 
-const PaginationSection = ({ page, setPage }: PaginationSectionProps) => {
   const handleNextPage = () => {
     setPage(page + 1);
   };

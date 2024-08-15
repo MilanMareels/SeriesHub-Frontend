@@ -4,15 +4,15 @@ import { useContext } from "react";
 import ErrorComponent from "../error/ErrorComponent";
 import Loading from "../ui/loading";
 import AnimeCardOfUser from "./animeOfUserCard";
+import { FilterContext } from "@/contexts/FilterContext";
 
-interface AnimePageOfUserWrapperProps {
-  page: number;
-  listStatus: string;
-}
-
-const AnimePageOfUserWrapper = ({ page, listStatus }: AnimePageOfUserWrapperProps) => {
+const AnimePageOfUserWrapper = () => {
   const { userId } = useContext(AuthContext);
-  const { animeSeriesOfUser, isError, isLoading, error } = useAnimeSeriesOfUser(userId, page, listStatus);
+  const { search, listStatus, page } = useContext(FilterContext);
+  const minAmoutOfChar = 3;
+  const validSearch = search.length > minAmoutOfChar ? search : "";
+
+  const { animeSeriesOfUser, isError, isLoading, error } = useAnimeSeriesOfUser(userId, page, listStatus, validSearch);
 
   if (isError) {
     return <ErrorComponent error={error} />;

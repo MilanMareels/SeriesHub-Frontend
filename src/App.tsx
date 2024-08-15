@@ -10,6 +10,7 @@ import Navbar from "./components/nav/NavBar";
 import MySeriesPage from "./pages/mySeriesPage";
 import AnimePage from "./pages/animePage";
 import AnimeDetailPage from "./pages/animeDetailPage";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -17,7 +18,7 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="bg-[#070F2B] w-full min-h-svh">
+    <div className="bg-[#070F2B] w-full min-h-svh flex flex-col justify-between">
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           {!isAuthenticated ? (
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/anime" element={<AnimePage />} />
                 <Route path="/anime/:animeId" element={<AnimeDetailPage />} />
               </Routes>
+              <Footer />
             </>
           )}
         </BrowserRouter>
