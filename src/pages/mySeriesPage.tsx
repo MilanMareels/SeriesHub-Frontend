@@ -1,28 +1,18 @@
-import ErrorComponent from "@/components/error/ErrorComponent";
-import AnimeCard from "@/components/homePage/AnimeCard";
-import Loading from "@/components/ui/loading";
-import { AuthContext } from "@/contexts/AuthContext";
-import useAnimeSeries from "@/hooks/useAnime";
-import { useContext } from "react";
+import AnimePageOfUserWrapper from "@/components/animePageOfUser/animePageOfUserWrapper";
+import FilterSection from "@/components/animePageOfUser/filterSection";
+import PaginationSection from "@/components/animePageOfUser/paginationSection";
+import { FilterProvider } from "@/contexts/FilterContext";
 
 const MySeriesPage = () => {
-  const { userId } = useContext(AuthContext);
-
-  const { animeSeries, isError, isLoading, error } = useAnimeSeries(userId);
-
-  if (isError) {
-    return <ErrorComponent error={error} />;
-  }
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
-    <div className="flex justify-center items-center flex-wrap h-full w-full">
-      {animeSeries?.map((animeSerie) => (
-        <AnimeCard animeSerie={animeSerie} key={animeSerie._id} />
-      ))}
+    <div className="h-full w-full">
+      <FilterProvider>
+        <FilterSection />
+
+        <AnimePageOfUserWrapper />
+
+        <PaginationSection />
+      </FilterProvider>
     </div>
   );
 };
