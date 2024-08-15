@@ -14,14 +14,9 @@ export interface RegisterError {
   userId?: string;
 }
 
-export const postRegister = async (
-  fullName: string,
-  userName: string,
-  email: string,
-  password: string
-): Promise<RegisterResponse | RegisterError> => {
+export const postRegister = async (userName: string, email: string, password: string): Promise<RegisterResponse | RegisterError> => {
   try {
-    const response = await axios.post(`${baseUrl}/register`, { fullName, userName, email, password });
+    const response = await axios.post(`${baseUrl}/register`, { userName, email, password });
     return response.data as RegisterResponse;
   } catch (error: any) {
     if (axios.isAxiosError(error) && error.response) {

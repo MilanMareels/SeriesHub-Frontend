@@ -8,6 +8,9 @@ import ProfilePage from "./pages/profilePage";
 import Register from "./components/register/Register";
 import Navbar from "./components/nav/NavBar";
 import MySeriesPage from "./pages/mySeriesPage";
+import AnimePage from "./pages/animePage";
+import AnimeDetailPage from "./pages/animeDetailPage";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -15,29 +18,30 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <>
-      <div className="flex flex-col h-screen w-full bg-[#070F2B]">
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            {!isAuthenticated ? (
+    <div className="bg-[#070F2B] w-full min-h-svh flex flex-col justify-between">
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          {!isAuthenticated ? (
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          ) : (
+            <>
+              <Navbar />
               <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/mySeries" element={<MySeriesPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/anime" element={<AnimePage />} />
+                <Route path="/anime/:animeId" element={<AnimeDetailPage />} />
               </Routes>
-            ) : (
-              <>
-                <Navbar />
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/mySeries" element={<MySeriesPage />} />
-                  <Route path="/profile" element={<ProfilePage />} />
-                </Routes>
-              </>
-            )}
-          </BrowserRouter>
-        </QueryClientProvider>
-      </div>
-    </>
+              <Footer />
+            </>
+          )}
+        </BrowserRouter>
+      </QueryClientProvider>
+    </div>
   );
 }
 
