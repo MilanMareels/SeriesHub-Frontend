@@ -46,8 +46,8 @@ export default function NavBar() {
                 </Link>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/mySeries" onClick={() => setNavbar(false)}>
-                  My Series
+                <Link to="/myAnime" onClick={() => setNavbar(false)}>
+                  My Anime
                 </Link>
               </li>
               <li className="text-white hover:text-indigo-200">
