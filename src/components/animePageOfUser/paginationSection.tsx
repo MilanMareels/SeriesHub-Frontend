@@ -3,7 +3,7 @@ import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, Pagi
 import { FilterContext } from "@/contexts/FilterContext";
 
 const PaginationSection = () => {
-  const { page, setPage } = useContext(FilterContext);
+  const { page, setPage, nextPage } = useContext(FilterContext);
 
   const handleNextPage = () => {
     setPage(page + 1);
@@ -20,9 +20,7 @@ const PaginationSection = () => {
         <PaginationItem>
           <PaginationLink>{page}</PaginationLink>
         </PaginationItem>
-        <PaginationItem className="hover:cursor-pointer hover:bg-white/10 rounded-lg">
-          <PaginationNext onClick={() => handleNextPage()} />
-        </PaginationItem>
+        <PaginationItem className="hover:cursor-pointer hover:bg-white/10 rounded-lg">{nextPage && <PaginationNext onClick={() => handleNextPage()} />}</PaginationItem>
       </PaginationContent>
     </Pagination>
   );

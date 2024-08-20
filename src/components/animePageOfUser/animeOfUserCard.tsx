@@ -1,8 +1,8 @@
-import { AnimeSerie } from "@/models/animeSerieOfUser/animeSerieOfUser";
+import { Data } from "@/models/animeSerieOfUser/animeSerieOfUser";
 import { Card, CardContent, CardTitle } from "../ui/card";
 
 interface AnimeCardOfUserProps {
-  aniumeSerieOfUser: AnimeSerie;
+  aniumeSerieOfUser: Data;
 }
 
 const AnimeCardOfUser = ({ aniumeSerieOfUser }: AnimeCardOfUserProps) => {

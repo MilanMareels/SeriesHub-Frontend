@@ -1,4 +1,9 @@
 export interface AnimeSerie {
+  animeSeries: Data[];
+  nextPage: boolean;
+}
+
+export interface Data {
   animeId: string;
   animeTitle: string;
   description: string;
