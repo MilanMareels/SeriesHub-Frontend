@@ -8,7 +8,7 @@ import { FilterContext } from "@/contexts/FilterContext";
 
 const AnimePageOfUserWrapper = () => {
   const { userId } = useContext(AuthContext);
-  const { search, listStatus, page } = useContext(FilterContext);
+  const { search, listStatus, page, setNextPage } = useContext(FilterContext);
   const minAmoutOfChar = 3;
   const validSearch = search.length > minAmoutOfChar ? search : "";
 
@@ -22,9 +22,13 @@ const AnimePageOfUserWrapper = () => {
     return <Loading />;
   }
 
+  if (animeSeriesOfUser) {
+    setNextPage(animeSeriesOfUser!.nextPage);
+  }
+
   return (
     <div className="h-full w-full flex items-center justify-center flex-wrap">
-      {animeSeriesOfUser?.map((aniumeSerieOfUser) => (
+      {animeSeriesOfUser?.animeSeries.map((aniumeSerieOfUser) => (
         <AnimeCardOfUser aniumeSerieOfUser={aniumeSerieOfUser} />
       ))}
     </div>
