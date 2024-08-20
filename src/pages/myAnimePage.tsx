@@ -3,7 +3,7 @@ import FilterSection from "@/components/animePageOfUser/filterSection";
 import PaginationSection from "@/components/animePageOfUser/paginationSection";
 import { FilterProvider } from "@/contexts/FilterContext";
 
-const MySeriesPage = () => {
+const MyAnimePage = () => {
   return (
     <div className="h-full w-full">
       <FilterProvider>
@@ -17,4 +17,4 @@ const MySeriesPage = () => {
   );
 };
 
-export default MySeriesPage;
+export default MyAnimePage;
