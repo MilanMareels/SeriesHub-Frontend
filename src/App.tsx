@@ -7,10 +7,10 @@ import Login from "./components/login/Login";
 import ProfilePage from "./pages/profilePage";
 import Register from "./components/register/Register";
 import Navbar from "./components/nav/NavBar";
-import MySeriesPage from "./pages/mySeriesPage";
 import AnimePage from "./pages/animePage";
 import AnimeDetailPage from "./pages/animeDetailPage";
 import Footer from "./components/footer/Footer";
+import MyAnimePage from "./pages/myAnimePage";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -31,7 +31,7 @@ function App() {
               <Navbar />
               <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/mySeries" element={<MySeriesPage />} />
+                <Route path="/myAnime" element={<MyAnimePage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/anime" element={<AnimePage />} />
                 <Route path="/anime/:animeId" element={<AnimeDetailPage />} />
