@@ -11,12 +11,9 @@ const Footer = () => {
         <AccordionTrigger>Why is it made?</AccordionTrigger>
         <AccordionContent>I created this application to ensure that everyone can track all their manga and anime series easily.</AccordionContent>
       </AccordionItem>
-      <AccordionItem value="item-2">
+      <AccordionItem value="item-3">
         <AccordionTrigger>Will there be more?</AccordionTrigger>
-        <AccordionContent>
-          Yes I will be adding even more incredible content to SeriesHub. Although I can’t say exactly when, you can expect a fantastic selection of new TV series and movies to be available
-          eventually. Stay tuned for updates.
-        </AccordionContent>
+        <AccordionContent>Yes I will be adding even more incredible content to SeriesHub. Although I can’t say exactly when, you can expect a fantastic selection of new TV series and movies to be available eventually. Stay tuned for updates.</AccordionContent>
       </AccordionItem>
     </Accordion>
   );
