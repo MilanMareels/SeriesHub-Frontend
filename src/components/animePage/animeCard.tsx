@@ -21,7 +21,7 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
             ></div>
 
             <p className="text-white max-w-[150px] truncate" title={animeSerie.title_english!}>
-              {animeSerie.title_english!}
+              {animeSerie.title_english! === null ? animeSerie.title : animeSerie.title_english}
             </p>
           </div>
         </HoverCardTrigger>
@@ -43,7 +43,7 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
               )}
             </div>
 
-            <p className="m-2">{animeSerie.episodes} episodes</p>
+            {animeSerie.episodes && <p className="m-2">{animeSerie.episodes} episodes</p>}
 
             <div className="flex flex-wrap">
               {animeSerie.genres.map((genre) => (
