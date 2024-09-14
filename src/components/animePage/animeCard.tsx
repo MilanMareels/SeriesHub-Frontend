@@ -20,8 +20,8 @@ export default function AnimeCard({ animeSerie }: AnimeCardPorps) {
               }}
             ></div>
 
-            <p className="text-white max-w-[150px] truncate" title={animeSerie.title}>
-              {animeSerie.title}
+            <p className="text-white max-w-[150px] truncate" title={animeSerie.title_english!}>
+              {animeSerie.title_english!}
             </p>
           </div>
         </HoverCardTrigger>

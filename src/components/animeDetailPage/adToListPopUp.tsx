@@ -1,5 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import AddToListSection from "./addToListSection";
 import { postAnimeToUserList } from "@/services/anime/addAnimeToUserList";
 import { AnimeDetails } from "@/models/anime/AnimeDetails";
@@ -19,7 +28,7 @@ function DialogAddToList({ animeDetailSeries, setSuccess, selectedStatus, setSel
 
   const handleAddAnimeToUserList = async (listStatus: string) => {
     const animeSerieToAddToUser: AnimeSerieToCreate = {
-      animeTitle: animeDetailSeries.data.title,
+      animeTitle: animeDetailSeries.data.title_english,
       description: animeDetailSeries.data.synopsis,
       genres: animeDetailSeries.data.genres.map((gerne) => {
         return gerne.name;
@@ -53,12 +62,18 @@ function DialogAddToList({ animeDetailSeries, setSuccess, selectedStatus, setSel
       <DialogContent className="max-w-[350px] rounded text-white bg-[#1B1A55]">
         <DialogHeader className="flex gap-2 items-center md:items-start">
           <DialogTitle>Add to your anime collection</DialogTitle>
-          <DialogDescription>Select the status in which you want to place the anime series in your collection.</DialogDescription>
+          <DialogDescription>
+            Select the status in which you want to place the anime series in your collection.
+          </DialogDescription>
           <AddToListSection selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <Button type="button" className="bg-white text-[#1B1A55]" onClick={() => handleAddAnimeToUserList(selectedStatus)}>
+            <Button
+              type="button"
+              className="bg-white text-[#1B1A55]"
+              onClick={() => handleAddAnimeToUserList(selectedStatus)}
+            >
               Save changes
             </Button>
           </DialogClose>

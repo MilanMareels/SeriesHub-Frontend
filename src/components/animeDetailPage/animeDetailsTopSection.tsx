@@ -19,9 +19,13 @@ const AnimeDetailsTopSection = ({ animeDetailSeries, success, selectedStatus }: 
         </Alert>
       )}
       <div className="flex flex-col items-center md:flex-row md:items-end md:justify-center">
-        <img className="md:mr-5 mb-5 md:mb-0" src={`${animeDetailSeries?.data.images["jpg"].large_image_url}`} alt="Anime Image" />
+        <img
+          className="md:mr-5 mb-5 md:mb-0"
+          src={`${animeDetailSeries?.data.images["jpg"].large_image_url}`}
+          alt="Anime Image"
+        />
         <div className="flex flex-col gap-5 text-center md:text-left">
-          <h1 className="text-white text-xl">{animeDetailSeries?.data.title}</h1>
+          <h1 className="text-white text-xl">{animeDetailSeries?.data.title_english}</h1>
           <p className="text-white">{animeDetailSeries?.data.synopsis}</p>
         </div>
       </div>
